@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Indian Binger — A Royal Journey Through India's Flavors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --maroon: #4a0e0e;
+      --gold: #d4af37;
+      --cream: #fffdf3;
+      --zinc: #f4f2ef;
+      --glass: rgba(255,255,255,0.03);
+      --card: rgba(255,255,255,0.02);
+      --max-width: 1100px;
+    }
+
+    /* Basic reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--maroon);
+      color:var(--cream);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:4rem;
+    }
+
+    /* Smooth scrolling */
+    html{scroll-behavior:smooth}
+
+    /* Container */
+    .container{max-width:var(--max-width);margin:0 auto;padding:2rem}
+
+    /* Mandala watermark (subtle) */
+    .mandala{
+      position:fixed;right:-10vw;top:-10vh;opacity:0.06;pointer-events:none;transform:rotate(12deg);width:60vmax;height:60vmax;mix-blend-mode:screen;filter:grayscale(1) contrast(1.1);
+    }
+
+    header{
+      border-bottom:4px solid rgba(212,175,55,0.12);
+      backdrop-filter: blur(6px);
+    }
+
+    .site-head{
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0;
+    }
+
+    .brand{
+      display:flex;align-items:center;gap:1rem;
+    }
+
+    .logo-wrap{width:84px;height:84px;border-radius:8px;display:grid;place-items:center;border:2px solid rgba(212,175,55,0.18);background:linear-gradient(180deg,rgba(0,0,0,0.06),transparent);overflow:hidden}
+    .logo{
+      width:100%;height:100%;display:flex;align-items:center;justify-content:center
+    }
+
+    .title-block h1{font-family:'Cormorant Garamond', serif;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;color:var(--gold);font-size:1.6rem}
+    .title-block p{font-family:'Cormorant Garamond', serif;color:var(--cream);opacity:0.95;font-size:.85rem}
+
+    /* Sticky nav */
+    nav{position:sticky;top:0;align-self:center}
+    .nav-list{display:flex;gap:.4rem;list-style:none}
+    .nav-list a{display:inline-block;padding:.55rem .9rem;border-radius:6px;text-decoration:none;color:var(--cream);font-weight:600;letter-spacing:0.06em;border:1px solid rgba(212,175,55,0.06);background:transparent}
+    .nav-list a:hover,.nav-list a:focus{background:linear-gradient(90deg,rgba(212,175,55,0.08),rgba(255,255,255,0.02));outline:2px solid rgba(212,175,55,0.06)}
+
+    /* Hero */
+    .hero{padding:3.5rem 0 2rem;display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:center}
+    .hero-inner{display:grid;grid-template-columns:1fr;gap:1.5rem}
+    .hero h2{font-family:'Cormorant Garamond', serif;font-size:3rem;color:var(--gold);margin-bottom:.5rem;line-height:1}
+    .hero p.lead{font-size:1.1rem;color:var(--cream);max-width:55ch}
+    .cta{display:inline-block;margin-top:1rem;padding:.9rem 1.25rem;border-radius:8px;background:var(--gold);color:var(--maroon);font-weight:700;text-decoration:none}
+
+    /* Grid for hero and image */
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:1.25rem}
+    .hero-img{width:100%;border:6px solid rgba(212,175,55,0.12);border-radius:10px}
+
+    /* Menu section */
+    section{padding:3.5rem 0}
+    .section-title{border-left:6px solid var(--gold);padding-left:1rem;margin-bottom:1rem}
+    .section-title h3{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold)}
+    .section-title p{color:var(--cream);opacity:0.9}
+
+    .menu-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(212,175,55,0.06);padding:1rem;border-radius:8px}
+    .card .card-head{background:transparent;padding:.75rem;border-radius:6px;margin-bottom:.75rem}
+    .card h4{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:2.15rem}
+    .card p.small, .muted.small{color: var(--gold);opacity:0.9;font-style:italic; font-size: 0.9rem;}
+
+    .dish{display:flex;justify-content:space-between;align-items:flex-start;padding:.45rem 0;border-top:1px dashed rgba(212,175,55,0.04)}
+    .dish:first-of-type{border-top:0}
+    .dish .meta{max-width:62%}
+    .price{font-family:monospace;font-weight:700}
+    .spice{margin-left:.5rem;display:inline-block;vertical-align:middle}
+
+    /* Badges */
+    .badge{display:inline-block;padding:.15rem .45rem;border-radius:999px;font-size:.75rem;background:rgba(212,175,55,0.12);color:var(--gold);border:1px solid rgba(212,175,55,0.08);margin-left:.45rem}
+    .chef{background:linear-gradient(90deg,rgba(212,175,55,0.18),rgba(255,255,255,0.02));color:var(--gold);border-color:rgba(212,175,55,0.12)}
+
+    /* Specials */
+    .specials{margin-top:1rem;padding:1rem;border:1px dashed rgba(212,175,55,0.06);border-radius:8px}
+
+    /* About */
+    .about-grid{display:grid;grid-template-columns:1fr;gap:1rem;align-items:center}
+    .about p.lead{font-family:'Cormorant Garamond',serif;color:var(--cream);opacity:0.95}
+
+    /* Contact */
+    .contact-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:1rem;border-radius:8px;border:1px solid rgba(212,175,55,0.06)}
+    form label{display:block;font-weight:700;font-size:.78rem;color:var(--gold);margin-bottom:.35rem}
+    input,textarea{width:100%;padding:.6rem;border-radius:6px;border:1px solid rgba(212,175,55,0.06);background:transparent;color:var(--cream)}
+    button.submit {
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--gold), #f6c453);
+  color: var(--maroon);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
+}
+
+/* ✨ Smooth golden glow and lift */
+button.submit:hover {
+  background: linear-gradient(135deg, #ffe17a, #f9c74f);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 16px rgba(255, 215, 100, 0.4);
+}
+    footer{margin-top:2.5rem;padding:2rem 0;border-top:4px solid rgba(212,175,55,0.06);color:rgba(255,255,255,0.75)}
+
+    /* Responsive */
+    @media(min-width:768px){
+      .hero-grid{grid-template-columns:1fr 420px;align-items:center}
+      .menu-grid{grid-template-columns:repeat(2,1fr)}
+      .about-grid{grid-template-columns:380px 1fr}
+      
+    }
+
+
+        @media(max-width:768px){
+  
+      .nav-list {display: none;}
+    }
+
+    @media(min-width:1100px){
+      .menu-grid{grid-template-columns:repeat(3,1fr)}
+      .hero h2{font-size:3.6rem}
+    }
+
+    /* small utilities */
+    .muted{opacity:0.85}
+    .text-gold{color:var(--gold)}
+    .text-cream{color:var(--cream)}
+  </style>
+</head>
+<body>
+
+  <!-- Mandala watermark SVG (subtle) -->
+  <svg class="mandala" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#d4af37" stop-opacity="0.18"/><stop offset="1" stop-color="#d4af37" stop-opacity="0.06"/></linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#g1)" stroke-width="2">
+      <circle cx="600" cy="600" r="420" stroke-opacity="0.6"/>
+      <g transform="translate(600,600)">
+        <!-- simplified mandala lines -->
+        <g stroke-opacity="0.6">
+          <path d="M0-360 L40 -180 L0 -160 L-40 -180 Z"/>
+          <!-- repeated petals -->
+        </g>
+      </g>
+    </g>
+  </svg>
+
+  <header>
+    <div class="container site-head">
+      <div class="brand">
+        <div class="logo-wrap" aria-hidden="true">
+          <div class="logo">
+            <img src="wmremove-transformed-4.png" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+          </div>
+        </div>
+        <div class="title-block">
+          <h1>Indian Binger</h1>
+          <p class="muted">SMALL BITES, BIG SPICE
+          </p>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div>
+            <h2>A Royal Journey Through India’s Flavors</h2>
+            <p class="lead">Indian Binger brings classic Indian street food to life with signature spices, vibrant flavors, and authentic presentation. Every dish celebrates tradition, crafted with precise technique.</p>
+            <a class="cta" href="#menu">Explore the Menu</a>
+
+            
+          </div>
+
+          <div>
+            <img src="https://preview.webstudio.ai/cgi/image/dev/9c555c3c233fe90b43dc0008e0ee7c32228e4f795d3da436783ae2d82cca0da2.png?width=1024&height=1024&format=auto" alt="Indian Street Food Starters" class="hero-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu">
+      <div class="container">
+        <div class="section-title">
+          <h3>Menu</h3>
+          <p class="muted">Classic Recipes, seasonal ingredients — spice levels shown with chilies</p>
+        </div>
+
+        <div class="menu-grid">
+          <!-- Card: Samosas & Kachoris -->
+          <div class="card" aria-labelledby="samosa-title">
+            <div class="card-head">
+              <h4 id="samosa-title">Quick bites</h4>
+            </div>
+            <div class="card-body">
+              <div class="dish">
+                <div class="meta">
+                  <strong>Classic Aloo Samosa</strong>
+                  <div class="muted small">Potato, peas, cumin, coriander</div>
+                </div>
+                <div>
+                  <div class="price">3.99</div>
+                </div>
+              </div>
+
+              <div class="dish">
+                <div class="meta">
+                  <strong>Onion Kachori </strong>
+                  <div class="muted small">Caramelized onion, fennel seeds, ginger</div>
+                </div>
+                <div>
+                  <div class="price">4.99</div>
+                </div>
+              </div>
+
+              <div class="dish">
+                <div class="meta">
+                  <strong>Vada Pav</strong>
+                  <span class="badge">Chef's Pick ⭐</span></strong>
+                  <div class="muted small">Spiced potato fritter, garlic chutney, soft bun, green chili 🌶️ </div>
+                </div>
+                <div>
+                  <div class="price">3.99</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Chaats & Street Food -->
+          <div class="card" aria-labelledby="chaat-title">
+            <div class="card-head">
+              <h4 id="chaat-title">Savory Palate</h4>
+            </div>
+            <div class="card-body">
+              <div class="dish">
+                <div class="meta">
+                  <strong>Aloo Tikki Chaat </strong><span class="badge chef">Chef's Pick ⭐</span>
+                  <div class="muted small">Potato patties, chickpea curry, yogurt</div>
+                </div>
+                <div><div class="price">4.99</div></div>
+              </div>
+
+              <div class="dish">
+                <div class="meta">
+                  <strong>Pani Puri <span style="font-size:10px ; font-weight: none; font-family: Arial, Helvetica, sans-serif; color: #d4af37;"><p>5 pieces</p></span></strong>
+                  <div class="muted small">Crisp shells, potato filling, tamarind water <span class="spice">🌶️🌶️</span></div>
+                </div>
+                <div><div class="price">2.99</div></div>
+              </div>
+
+              <div class="dish">
+                <div class="meta">
+                  <strong>Bhel Puri</strong>
+                  <div class="muted small">Puffed rice, vegetables, tangy chutneys</div>
+                </div>
+                <div><div class="price">2.99</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Pakoras & Fritters -->
+         
+
+          <!-- Card: Rolls & Wraps -->
+          <div class="card" aria-labelledby="rolls-title">
+            <div class="card-head"><h4 id="rolls-title">Rolls & Wraps</h4></div>
+            <div class="card-body">
+              <div class="dish"><div class="meta"><strong>Paneer Kathi Roll</strong><div class="muted small">Marinated cottage cheese, bell peppers, mint chutney</div></div><div><div class="price">7.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Aloo Tikki Wrap</strong><div class="muted small">Spiced potato patty, yogurt, tamarind sauce</div></div><div><div class="price">6.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Chole Bhature Roll</strong><div class="muted small">Spiced chickpeas, onions, cilantro</div></div><div><div class="price">7.99</div></div></div>
+            </div>
+          </div>
+
+          <!-- Card: Dosas & Uttapams -->
+          <div class="card" aria-labelledby="dosa-title">
+            <div class="card-head"><h4 id="dosa-title">Mains and Curries</h4></div>
+            <div class="card-body">
+              <div class="dish"><div class="meta"><strong>Jeera Aalu</strong><div class="muted small">Potatoes sauted with cumin seeds and spices </div></div><div><div class="price">10.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Paneer Lababdar</strong><div class="muted small">Cubes of cottage cheese in tomato gravy </div></div><div><div class="price">14.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Dal makhani</strong><div class="muted small">Rich black lentils, slow-cooked in butter, creamy tomato sauce</div></div><div><div class="price">14.99</div></div></div>
+              <div class="card-head"><h4 id="dosa-title">Breads</h4></div>
+              <div class="dish"><div class="meta"><strong>Naan/Paratha</strong><div class="muted small">Complimentary with each portion of curry</div></div><div><div class="price">0.00</div></div></div>
+              
+</div>
+          </div>
+
+          <!-- Card: Beverages -->
+          <div class="card" aria-labelledby="bev-title">
+            <div class="card-head"><h4 id="bev-title">Beverages</h4></div>
+            <div class="card-body">
+              <div class="dish"><div class="meta"><strong>Kesar Masala Chai</strong><div class="muted small">Black tea, milk, cardamom, ginger</div></div><div><div class="price">2.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Mango Lassi</strong><div class="muted small">Yogurt, mango pulp, cardamom</div></div><div><div class="price">3.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Shikanji</strong><div class="muted small">Fresh lime, water, cumin, black salt</div></div><div><div class="price">1.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Rose Sherbet</strong><div class="muted small">Rose syrup, fresh lime, water, cumin</div></div><div><div class="price">2.99</div></div></div>
+            <div class="dish"><div class="meta"><strong>Paan shots</strong><div class="muted small">Betel leaf, sweetened milk, gulkand,cardamom</div></div><div><div class="price">2.99</div></div></div>
+</div>
+          </div>
+
+          <!-- Card: Desserts & Sweets -->
+          <div class="card" aria-labelledby="dessert-title">
+            <div class="card-head"><h4 id="dessert-title">Desserts & Sweets</h4></div>
+            <div class="card-body">
+              <div class="dish"><div class="meta"><strong>Gulab Jamun</strong><div class="muted small">Milk dumplings in saffron-cardamom syrup</div></div><div><div class="price">3.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Rasmalai</strong><div class="muted small">Soft paneer discs soaked in sweet saffron milk</div></div><div><div class="price">4.99</div></div></div>
+              <div class="dish"><div class="meta"><strong>Falooda</strong><div class="muted small">Rose syrup, vermicelli, basil seeds, milk</div></div><div><div class="price">4.99</div></div></div>
+             
+            </div>
+          </div>
+
+        </div>
+
+      
+
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <img src="WhatsApp Image 2025-10-27 at 15.15.57_b68fe365-fotor-bg-remover-20251030142748.png" alt="Prerna Singhee" style="width:100%;border-radius:10px;border:6px solid rgba(212,175,55,0.12)">
+        </div>
+        <div>
+          <div class="section-title" style="border-left-width:6px">
+            <h3>About Prerna</h3>
+            <p class="muted">The woman who made it all!</p>
+          </div>
+          <p class="lead">Prerna’s passion for food is as vibrant as the spices she grew up with. From her mother’s kitchen she has carried an unshakable enthusiasm for learning and creating. She approaches every dish with curiosity and precision — always eager to explore new techniques, flavors, and traditions. Adaptable and open-minded, she embraces change as an essential ingredient in growth. Her positive energy fills every kitchen she steps into, turning challenges into inspiration and meals into moments of joy.</p>
+
+          <!-- <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem">
+            <div style="border-top:4px solid var(--gold);padding-top:.5rem"><strong class="text-gold">Background</strong><div class="muted">Engineer → Culinary Artist</div></div>
+            <div style="border-top:4px solid var(--gold);padding-top:.5rem"><strong class="text-gold">Training</strong><div class="muted">Master chefs of Delhi & Mumbai</div></div>
+            <div style="border-top:4px solid var(--gold);padding-top:.5rem"><strong class="text-gold">Philosophy</strong><div class="muted">Precision, purity, presentation</div></div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+   
+
+          <!-- Contact Section -->
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h3>Contact</h3>
+      <!-- <p class="muted"></p> -->
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr;gap:1rem">
+      <!-- Contact Info Card -->
+      <div class="contact-card">
+        <h4 class="text-gold">Location</h4>
+        <p>Lucan<br>Dublin<br>Ireland</p>
+
+        <h4 class="text-gold" style="margin-top:1rem">Contact</h4>
+        <p class="muted">+353 8998 20276<br>indianbinger@gmail.com</p>
+      </div>
+
+      <!-- Contact Form Card -->
+      <div class="contact-card">
+        <h4 class="text-gold">Message Us</h4>
+        <form id="contact-form">
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required>
+
+          <label for="email" style="margin-top:.6rem">Email</label>
+          <input id="email" name="email" placeholder="you@email.com" required>
+
+              <label for="whatsapp" style="margin-top:.6rem">WhatsApp Number</label>
+<input id="whatsapp" name="whatsapp" placeholder="+353 89 982 0276" required>
+
+
+          
+          
+
+
+          <label for="message" style="margin-top:.6rem">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Write your message" ></textarea>
+
+
+          <div style="margin-top:.6rem">
+            <button type="submit" class="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("gMJc-K94GNQ2HtY7p"); // Your EmailJS public key
+  })();
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const whatsappField = document.getElementById("whatsapp");
+      const whatsapp = whatsappField ? whatsappField.value.trim() : "";
+      const message = document.getElementById("message").value.trim();
+
+      // ✅ Show instant feedback
+      alert("✅ Your message is being sent...");
+
+      // Send email in background
+      emailjs.send("service_k6x0b55", "template_wkj9rd9", {
+        name: name,
+        email: email,
+        whatsapp: whatsapp,
+        message: message
+      }).then(
+        function(response) {
+          console.log("EmailJS: message sent successfully", response.status);
+          form.reset();
+        },
+        function(error) {
+          console.error("EmailJS error:", error);
+          alert("❌ Failed to send message. Please try again later.");
+        }
+      );
+    });
+  });
+</script>
+
+
+   
+
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div>&copy; <strong>Indian Binger</strong> — 2025 · All rights reserved · Darsh Singhee</div>
+      <div style="display:flex;gap:.75rem">
+        <a href="https://www.instagram.com/indianbinger?igsh=cXgycnd3ODd5N256" style="color:var(--cream);text-decoration:none">Instagram</a>
+        
+        
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
